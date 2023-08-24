@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>427</width>
-    <height>305</height>
+    <height>157</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -85,7 +85,7 @@
         <item>
          <widget class="QRadioButton" name="rbSalience">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="text">
            <string>Salience Image</string>
@@ -154,34 +154,6 @@
          </spacer>
         </item>
        </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="gbSalienceMap">
-     <property name="title">
-      <string>Salience Map</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QCheckBox" name="cbSalience">
-        <property name="text">
-         <string>CheckBox</string>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>

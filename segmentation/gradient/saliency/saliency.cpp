@@ -9,6 +9,7 @@ Saliency::Saliency(QWidget *parent) :
 {
     ui->setupUi(this);
     saliencyImage = nullptr;
+    weightedSaliencyImage = nullptr;
     _name = "Salience map";
     connect(ui->pbLoad, SIGNAL(clicked()), this, SLOT(loadSaliency()));
     connect(ui->lePath, SIGNAL(textChanged(QString)), this, SLOT(updateArcWeightParams()));
@@ -20,6 +21,7 @@ Saliency::Saliency(QWidget *parent) :
 Saliency::~Saliency()
 {
     iftDestroyImage(&saliencyImage);
+    iftDestroyImage(&weightedSaliencyImage);
     delete ui;
 }
 
@@ -43,6 +45,24 @@ const iftImage *Saliency::getSaliencyImage()
         }
     }
     return saliencyImage;
+}
+
+const iftImage *Saliency::getWeightedSaliencyImage()
+{
+    float factor = ui->sbSaliencyFactor->value();
+
+    if (!weightedSaliencyImage) {
+        const iftImage *saliency = getSaliencyImage();
+        const iftImage *img = view->getImage();
+        weightedSaliencyImage = iftCreateImageFromImage(saliency);
+
+
+        for (int p = 0; p < weightedSaliencyImage->n; p++) {
+            weightedSaliencyImage->val[p] = factor * saliency->val[p] + (1 - factor) * img->val[p];
+        }
+    }
+
+    return weightedSaliencyImage;
 }
 
 void Saliency::generate()
@@ -105,6 +125,13 @@ void Saliency::loadSaliency()
 void Saliency::updateSaliencyPath()
 {
     iftDestroyImage(&saliencyImage);
+    iftDestroyImage(&weightedSaliencyImage);
+}
+
+void Saliency::updateArcWeightParams()
+{
+    iftDestroyImage(&weightedSaliencyImage);
+    ArcWeightFunction::updateArcWeightParams();
 }
 
 void Saliency::preprocess()
