@@ -32,6 +32,8 @@ LiveWire::LiveWire(MainWindow *parent, View *view) :
     connect(ui->rbNoOrientaion, SIGNAL(toggled(bool)), this, SLOT(changeOrientationMethod()));
     connect(ui->rbForce, SIGNAL(toggled(bool)), this, SLOT(changeOrientationMethod()));
     connect(ui->rbSalience, SIGNAL(toggled(bool)), this, SLOT(changeOrientationMethod()));
+    connect(ui->rbSalience, SIGNAL(toggled(bool)), this, SLOT(selectSalienceMethod(bool)));
+
 
     QAction *foo = new QAction(this);
     foo->setShortcut(Qt::CTRL | Qt::Key_Z);
@@ -269,11 +271,7 @@ QList<iftImage*> LiveWire::generateLabel()
 
 void LiveWire::notifyGradientUpdate(ArcWeightFunction *function)
 {
-    saliency = dynamic_cast<Saliency*>(function);
-    ui->rbSalience->setEnabled(saliency != nullptr);
-    if (!saliency) {
-        ui->rbNoOrientaion->setChecked(true);
-    }
+    this->currentArcWeightFunction = function;
 }
 
 void LiveWire::renderGraphics(iftImage *orig, iftImage *image, QGraphicsPixmapItem *imagePixmap, int sliceType)
@@ -359,7 +357,7 @@ void LiveWire::start()
 {
     if (saliency && ui->rbSalience->isChecked()) {
         try {
-            imageTmp = saliency->getSaliencyImage();
+            imageTmp = saliency->getWeightedSaliencyImage();
         } catch (QString error) {
             QMessageBox::warning((QWidget*) parent,
                                  tr("Warning"),
@@ -472,6 +470,20 @@ void LiveWire::changeOrientationMethod()
 {
     bool orientationDirectionEnabled = ui->rbForce->isChecked() || ui->rbSalience->isChecked();
     ui->gbOrientation->setEnabled(orientationDirectionEnabled);
+}
+
+void LiveWire::selectSalienceMethod(bool selected)
+{
+    if (selected) {
+        saliency = dynamic_cast<Saliency*>(currentArcWeightFunction);
+        //ui->rbSalience->setEnabled(saliency != nullptr);
+        if (!saliency) {
+            QMessageBox::warning((QWidget*) parent,
+                                 tr("Warning"),
+                                 "You need to choose the salience arc-weight function.");
+            ui->rbNoOrientaion->setChecked(true);
+        }
+    }
 }
 
 void LiveWire::paintPath(int *path)

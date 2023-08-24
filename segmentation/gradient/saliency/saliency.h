@@ -18,6 +18,7 @@ public:
     ~Saliency();
 
     const iftImage *getSaliencyImage();
+    const iftImage *getWeightedSaliencyImage();
 public slots:
     void generate() override;
 
@@ -25,11 +26,13 @@ public slots:
 private slots:
     void loadSaliency();
     void updateSaliencyPath();
+    void updateArcWeightParams() override;
 
 private:
     Ui::Saliency *ui;
 
     iftImage *saliencyImage;
+    iftImage *weightedSaliencyImage;
 
     void preprocess() override;
 

@@ -35,6 +35,7 @@ private slots:
     void undo();
     void done();
     void changeOrientationMethod();
+    void selectSalienceMethod(bool selected);
 
 private:
     Ui::LiveWire *ui;
@@ -58,6 +59,8 @@ protected:
     iftImage *origRenderImage[4];
     iftImage *origImage[4];
     iftImage *tmpRenderImage[4];
+
+    ArcWeightFunction *currentArcWeightFunction = nullptr;
 
     int *path;
     QVector<int*> segments;
