@@ -1,6 +1,6 @@
 # MISe
 
-**To be announced.**
+[![DOI](https://zenodo.org/badge/599198442.svg)](https://zenodo.org/badge/latestdoi/599198442)
 
 This is the official repository of the software MISe - Multidimensional Image Segmentation. MISe offers a suite of image segmentation and analysis algorithms developed using the Image Foresting Transform (IFT) framework, coupled with image visualization and volume rendering tools. Living up to its name, MISe accepts the workload with various 2D, 3D, and 4D images.
 
