@@ -4,6 +4,24 @@
 
 This is the official repository of the software MISe - Multidimensional Image Segmentation. MISe offers a suite of image segmentation and analysis algorithms developed using the Image Foresting Transform (IFT) framework, coupled with image visualization and volume rendering tools. Living up to its name, MISe accepts the workload with various 2D, 3D, and 4D images.
 
+## Installation Guide
+
+This tutorial was tested on Ubuntu 22.04. Ensure you have libift compiled on your machine. The following packages are necessary to build the Qt user interfaces:
+
+```console
+apt install qt6-base-dev libqt6charts6-dev
+```
+
+Next, you are all set to compile MISe:
+
+```console
+cd PATH_FOR_MISE_SOURCE_CODE
+qmake6 IFT_DIR="PATH_FOR_LIBIFT_DIR"
+make
+```
+
+## Citation
+
 If you find this software useful for your research, please cite it as follows.
 
 ```bibtex
