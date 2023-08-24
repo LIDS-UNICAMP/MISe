@@ -25,14 +25,19 @@ make
 If you find this software useful for your research, please cite it as follows.
 
 ```bibtex
-@article{ilan2023mise,
-  title={LIDS-UNICAMP: MISe: Multidimensional Image Segmentation},
-  DOI={10.5281/zenodo.8280035},
-  publisher={Zenodo},
-  author={Ilan Francisco da Silva and Taylla Milena Theodoro},
-  url = {https://github.com/LIDS-UNICAMP/MISe},
-  year={2023},
-  month={Aug}
+@software{mise,
+  author       = {Ilan Francisco da Silva and
+                  Taylla Milena Theodoro and
+                  Azael M Sousa and
+                  Alexandre Xavier Falcão},
+  title        = {{LIDS-UNICAMP/MISe: MISe: Multidimensional Image 
+                   Segmentation}},
+  month        = aug,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {v0.0.1-alpha},
+  doi          = {10.5281/zenodo.8280035},
+  url          = {https://doi.org/10.5281/zenodo.8280035}
 }
 
 @article{falcao2004image,
