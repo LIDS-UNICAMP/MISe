@@ -6,7 +6,7 @@ message: >-
 type: software
 authors:
   - given-names: Ilan Francisco
-    family-names: da Silva
+    family-names: Silva
     email: ilanfsilva@gmail.com
     orcid: 'https://orcid.org/0000-0003-4019-3380'
     affiliation: University of Campinas
@@ -14,7 +14,7 @@ authors:
     family-names: Theodoro
     email: tayllamth@gmail.com
     affiliation: University of Campinas
-  - given-names: Azael de Melo
+  - given-names: Azael Melo
     family-names: Sousa
     email: azaelmsousa@gmail.com
     affiliation: University of Campinas
